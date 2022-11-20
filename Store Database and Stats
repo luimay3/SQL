@@ -1,0 +1,26 @@
+--Create a store database
+
+CREATE TABLE mystore (id INTEGER PRIMARY KEY, name TEXT, quantity INTEGER, rating TEXT, price INTEGER);
+
+INSERT INTO mystore VALUES 
+(1, 'shirt', 30, '100%', 5),
+(2, 'pants', 50, '95%', 12),
+(3, 'underwear', 70, '92%', 29),
+(4, 'socks', 200, '98%', 32),
+(5, 'jackets', 500, '89%', 54),
+(6, 'hoodies', 320, '59%', 67),
+(7, 'bracelets', 90, '77%', 81),
+(8, 'sunglasses', 100, '88%', 3),
+(9, 'shoes', 100, '90%', 7),
+(10, 'suits', 320, '79%', 32),
+(11, 'dresses', 59, '32%', 21),
+(12, 'hats', 120, '87%', 45),
+(13, 'gloves', 220, '67%', 89),
+(14, 'wallets', 32, '100%', 9),
+(15, 'watches', 22, '100%', 66)
+;
+
+--Displaying items from lowest to highest price
+
+SELECT * FROM mystore;
+SELECT * FROM mystore ORDER BY price ASC;

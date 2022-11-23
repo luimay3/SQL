@@ -1,0 +1,32 @@
+CREATE TABLE actors (id INTEGER PRIMARY KEY, name TEXT, age INTEGER);
+
+INSERT INTO actors VALUES
+(1, 'Tobey Maguire', 47),
+(2, 'Chris Evans', 41),
+(3, 'Robert Downey Jr.', 57);
+
+CREATE TABLE movies (id INTEGER PRIMARY KEY, title TEXT, release_date INTEGER);
+
+INSERT INTO movies VALUES
+(1, 'Spiderman', 2002),
+(2, 'Captain America: The First Avenger', 2011),
+(3, 'Iron Man', 2008);
+
+CREATE TABLE hobbies (id INTEGER PRIMARY KEY, name TEXT);
+
+INSERT INTO hobbies VALUES 
+(1, 'lifting weights'),
+(2, 'running'),
+(3, 'boxing');
+
+SELECT actors.name, movies.title, movies.release_date
+FROM actors
+JOIN movies
+ON actors.id = movies.id
+ORDER BY movies.release_date;
+
+SELECT actors.name, hobbies.name as exercise, actors.age
+FROM actors
+JOIN hobbies
+ON actors.id = hobbies.id
+ORDER BY actors.age DESC;

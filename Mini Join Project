@@ -3,21 +3,30 @@ CREATE TABLE actors (id INTEGER PRIMARY KEY, name TEXT, age INTEGER);
 INSERT INTO actors VALUES
 (1, 'Tobey Maguire', 47),
 (2, 'Chris Evans', 41),
-(3, 'Robert Downey Jr.', 57);
+(3, 'Robert Downey Jr.', 57),
+(4, 'Edward Norton', 53),
+(5, 'Chris Hemsworth', 39),
+(6, 'Elizabeth Olsen', 33);
 
 CREATE TABLE movies (id INTEGER PRIMARY KEY, title TEXT, release_date INTEGER);
 
 INSERT INTO movies VALUES
 (1, 'Spiderman', 2002),
 (2, 'Captain America: The First Avenger', 2011),
-(3, 'Iron Man', 2008);
+(3, 'Iron Man', 2008),
+(4, 'The Incredible Hulk', 2008),
+(5, 'Thor', 2011),
+(6, 'WandaVision', 2021);
 
 CREATE TABLE hobbies (id INTEGER PRIMARY KEY, name TEXT);
 
 INSERT INTO hobbies VALUES 
 (1, 'lifting weights'),
 (2, 'running'),
-(3, 'boxing');
+(3, 'boxing'),
+(4, 'dancing'),
+(5, 'running'),
+(6, 'boxing');
 
 SELECT actors.name, movies.title, movies.release_date
 FROM actors
@@ -30,3 +39,5 @@ FROM actors
 JOIN hobbies
 ON actors.id = hobbies.id
 ORDER BY actors.age DESC;
+
+

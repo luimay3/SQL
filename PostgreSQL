@@ -1,0 +1,21 @@
+SELECT COUNT(type)
+FROM "CharlotteChaze/BreakIntoTech"."netflix_titles_info" 
+WHERE type = 'Movie';
+
+SELECT MAX(date(date_added))
+FROM "CharlotteChaze/BreakIntoTech"."netflix_titles_info" ;
+
+SELECT title, type
+FROM "CharlotteChaze/BreakIntoTech"."netflix_titles_info" 
+ORDER BY title;
+
+SELECT people.director, title.title 
+FROM "CharlotteChaze/BreakIntoTech"."netflix_people" people
+LEFT JOIN "CharlotteChaze/BreakIntoTech"."netflix_titles_info" title
+ON people.show_id = title.show_id
+WHERE title.title = 'Bright Star';
+
+SELECT title, release_year
+FROM "CharlotteChaze/BreakIntoTech"."netflix_titles_info" 
+WHERE type = 'Movie'
+ORDER BY release_year ASC LIMIT 1;

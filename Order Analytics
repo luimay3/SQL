@@ -1,0 +1,30 @@
+SELECT COUNT(quantity) FROM JanSales;
+
+SELECT product, COUNT(quantity)as total FROM JanSales
+WHERE product = 'iPhone'; 
+
+/** Second way of getting iPhone quantity**/
+SELECT product, COUNT(quantity)as total FROM JanSales
+GROUP BY product HAVING product = 'iPhone';
+
+SELECT customers.acctnum FROM customers
+JOIN FebSales
+ON customers.order_id = FebSales.orderID;
+
+SELECT product, price FROM JanSales
+ORDER BY price ASC;
+
+SELECT * FROM JanSales;
+
+SELECT product, SUM(quantity)*price as total_revenue FROM JanSales
+GROUP BY product;
+
+SELECT * FROM FebSales;
+
+SELECT product, SUM(quantity) as total_quantity, SUM(quantity)*price as total_revenue FROM FebSales
+GROUP BY product;
+
+SELECT COUNT(customers.acctnum), AVG(FebSales.price*FebSales.Quantity) FROM customers
+JOIN FebSales
+ON customers.order_id = FebSales.orderID
+WHERE quantity >= 2;

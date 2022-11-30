@@ -42,3 +42,15 @@ SELECT artist_name, COUNT(artist_name) as total_songs
 FROM Spotifydata
 GROUP BY artist_name HAVING COUNT(artist_name) >= 2
 ORDER BY total_songs;
+
+
+WITH tempTable AS (
+  SELECT
+  artist_name, AVG(popularity) as avg_pop 
+  FROM Spotifydata
+  GROUP BY artist_name
+)
+
+SELECT artist_name as TopStar, avg_pop 
+From tempTable
+WHERE avg_pop >= 90

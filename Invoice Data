@@ -1,0 +1,23 @@
+SELECT FirstName, LastName, Title 
+FROM employees
+WHERE Title LIKE '%Agent%';
+
+SELECT CustomerId, FirstName, LastName, Country 
+FROM customers
+WHERE Country != 'USA';
+
+SELECT * FROM customers
+WHERE Country = 'Brazil';
+
+SELECT customers.FirstName, customers.LastName, invoices.InvoiceId, invoices.InvoiceDate, invoices.BillingCountry
+FROM customers
+JOIN invoices
+ON customers.CustomerId = invoices.InvoiceId
+WHERE invoices.BillingCountry = 'Brazil';
+
+SELECT DISTINCT BillingCountry
+FROM invoices;
+
+SELECT COUNT(InvoiceId) as total_invoice
+FROM invoices
+WHERE InvoiceDate LIKE '%2009%';

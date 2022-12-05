@@ -1,8 +1,7 @@
-# For this project, I downloaded Spotify data from Kaggle.
-# Then I created a table to insert Spotify data into.
-# Finally, I performed analytics on the data using SQL. 
+--For this project, I downloaded Spotify data from Kaggle.
+--A table was then created to insert Spotify data into. 
 
-#Creating the table: 
+--Creating the table: 
 CREATE TABLE BIT_DB.Spotifydata (
 id integer PRIMARY KEY,
 artist_name varchar NOT NULL,
@@ -24,26 +23,29 @@ duration_ms integer NOT NULL,
 time_signature integer NOT NULL 
 )
 
-#Then I inserted the Spotify Data .csv into the table.
+--Then I inserted the Spotify Data .csv into the table.
 
-#Next, I explored the data using the following SQL. 
+--Selecting all data to see what it pulls up
 SELECT * FROM Spotifydata;
 
+--Selecting the top 10 popular artists and their tracks
 SELECT artist_name, popularity, track_id
 FROM Spotifydata
 ORDER BY popularity
 LIMIT 10;
 
+--Selecting a specific artist and their tracks
 SELECT artist_name, track_name
 FROM Spotifydata
 WHERE artist_name = 'Doja Cat';
 
+--Selecting artists with more than 2 songs
 SELECT artist_name, COUNT(artist_name) as total_songs
 FROM Spotifydata
 GROUP BY artist_name HAVING COUNT(artist_name) >= 2
 ORDER BY total_songs;
 
-
+--Using CTE to select artists with an average popularity of 90 or more 
 WITH tempTable AS (
   SELECT
   artist_name, AVG(popularity) as avg_pop 

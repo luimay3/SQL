@@ -1,20 +1,27 @@
+--Using SQL to answer questions about a database holding Netflix information
+
+--Selecting how many movies (not TV shows) there are in the database
 SELECT COUNT(type)
 FROM "CharlotteChaze/BreakIntoTech"."netflix_titles_info" 
 WHERE type = 'Movie';
 
+--Selecting most recent added titles
 SELECT MAX(date(date_added))
 FROM "CharlotteChaze/BreakIntoTech"."netflix_titles_info" ;
 
+--Selecting all titles and their type (Movies/TV shows)
 SELECT title, type
 FROM "CharlotteChaze/BreakIntoTech"."netflix_titles_info" 
 ORDER BY title;
 
+--Joining two tables to see which director is associated with a movie
 SELECT people.director, title.title 
 FROM "CharlotteChaze/BreakIntoTech"."netflix_people" people
 LEFT JOIN "CharlotteChaze/BreakIntoTech"."netflix_titles_info" title
 ON people.show_id = title.show_id
 WHERE title.title = 'Bright Star';
 
+--Selecting the oldest movie in the database
 SELECT title, release_year
 FROM "CharlotteChaze/BreakIntoTech"."netflix_titles_info" 
 WHERE type = 'Movie'

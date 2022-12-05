@@ -1,23 +1,29 @@
+--Selecting names of employees who work as Sales Agents
 SELECT FirstName, LastName, Title 
 FROM employees
 WHERE Title LIKE '%Agent%';
 
+--Selecting customers not in the United States
 SELECT CustomerId, FirstName, LastName, Country 
 FROM customers
 WHERE Country != 'USA';
 
+--Selecting customers in Brazil
 SELECT * FROM customers
 WHERE Country = 'Brazil';
 
+--Joining 2 tables to gather invoice data of customers from Brazil
 SELECT customers.FirstName, customers.LastName, invoices.InvoiceId, invoices.InvoiceDate, invoices.BillingCountry
 FROM customers
 JOIN invoices
 ON customers.CustomerId = invoices.InvoiceId
 WHERE invoices.BillingCountry = 'Brazil';
 
+--Selecting all billing countries exluding duplicates
 SELECT DISTINCT BillingCountry
 FROM invoices;
 
+--Selecting total orders from 2009
 SELECT COUNT(InvoiceId) as total_invoice
 FROM invoices
 WHERE InvoiceDate LIKE '%2009%';

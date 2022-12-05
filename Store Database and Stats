@@ -1,4 +1,3 @@
---First SQL Code
 --Create a store database
 
 CREATE TABLE mystore (id INTEGER PRIMARY KEY, name TEXT, quantity INTEGER, rating TEXT, price INTEGER);

@@ -1,3 +1,4 @@
+--Creating table with a list of actors
 CREATE TABLE actors (id INTEGER PRIMARY KEY, name TEXT, age INTEGER);
 
 INSERT INTO actors VALUES
@@ -8,6 +9,7 @@ INSERT INTO actors VALUES
 (5, 'Chris Hemsworth', 39),
 (6, 'Elizabeth Olsen', 33);
 
+--Creating table with movies connected to actors
 CREATE TABLE movies (id INTEGER PRIMARY KEY, title TEXT, release_date INTEGER);
 
 INSERT INTO movies VALUES
@@ -18,6 +20,7 @@ INSERT INTO movies VALUES
 (5, 'Thor', 2011),
 (6, 'WandaVision', 2021);
 
+--Creating a table giving the actors random hobbies
 CREATE TABLE hobbies (id INTEGER PRIMARY KEY, name TEXT);
 
 INSERT INTO hobbies VALUES 
@@ -28,12 +31,14 @@ INSERT INTO hobbies VALUES
 (5, 'running'),
 (6, 'boxing');
 
+--Joined two tables and selected movies and their release dates associated with the actors.  Data ordered by release date
 SELECT actors.name, movies.title, movies.release_date
 FROM actors
 JOIN movies
 ON actors.id = movies.id
 ORDER BY movies.release_date;
 
+--Joined two tables and selected the hobbies associated with the actors and ordered by youngest to oldest
 SELECT actors.name, hobbies.name as exercise, actors.age
 FROM actors
 JOIN hobbies

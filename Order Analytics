@@ -1,69 +1,57 @@
+--Using SQL to gather order infomration from a database
+
+--Selecting how many orders were placed in January 
 SELECT COUNT(quantity) FROM JanSales;
 
-
+--Selecting the total orders of a specific item
 SELECT product, COUNT(quantity)as total FROM JanSales
 WHERE product = 'iPhone'; 
 
-
-/** Second way of getting iPhone quantity**/
-SELECT product, COUNT(quantity)as total FROM JanSales
-GROUP BY product HAVING product = 'iPhone';
-
-
+--Selecting account numbers from orders placed in February
 SELECT customers.acctnum FROM customers
 JOIN FebSales
 ON customers.order_id = FebSales.orderID;
 
-
+--Selecting cheapest product price in January
 SELECT product, price FROM JanSales
 ORDER BY price ASC;
 
-
+--Selecting the revenue for each product in January
 SELECT product, SUM(quantity)*price as total_revenue FROM JanSales
 GROUP BY product;
 
-
-SELECT product, SUM(quantity) as total_quantity, SUM(quantity)*price as total_revenue FROM FebSales
-GROUP BY product;
-
-
+--Selecting customers who ordered more than 2 products and the average amount spent
 SELECT COUNT(customers.acctnum), AVG(FebSales.price*FebSales.Quantity) FROM customers
 JOIN FebSales
 ON customers.order_id = FebSales.orderID
 WHERE quantity >= 2;
 
-
+--Selecting total of each product sold in L.A.
 SELECT DISTINCT Product, SUM(Quantity) as Total_Sold, Location
 FROM BIT_DB.FebSales 
 WHERE Location like '%Los Angeles%'
 GROUP BY Product;
 
-
+--Selecting locations in NY that received 3 orders or more
 SELECT distinct location, count(orderID)
 FROM BIT_DB.JanSales
 WHERE location LIKE '%NY%'
 GROUP BY location
 HAVING count(orderID)>2;
 
-
+--Selecting total headphones sold in Feburuary
 SELECT product, SUM(quantity)
 FROM FebSales
 WHERE product LIKE '%Headphones%'
 GROUP BY product; 
 
-
+--Selecting average quantity of products purchased per account 
 SELECT sum(quantity*price)/count(cust.acctnum)
 FROM BIT_DB.FebSales Feb
 LEFT JOIN BIT_DB.customers cust
 ON FEB.orderid=cust.order_id;
 
-
-select sum(quantity)/count(cust.acctnum)
-FROM BIT_DB.FebSales Feb
-LEFT JOIN BIT_DB.customers cust
-ON FEB.orderid=cust.order_id;
-
-
+--Selecting product that had the most revenue in January
 SELECT product, 
 sum(quantity*price)
 FROM BIT_DB.JanSales 
